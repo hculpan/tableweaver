@@ -1,0 +1,91 @@
+/* TableWeaver Theme CSS */
+
+/* Color Palette */
+:root {
+    --tw-deep-blue: #003366; /* Deep blue color for primary elements */
+    --tw-silver: #C0C0C0; /* Silver color for secondary elements */
+    --tw-magic-sparkle: #FFFFFF; /* White or light sparkle color for highlights */
+    --tw-dark-accent: #001a33; /* A darker shade of blue for accents and depth */
+    --tw-light-accent: #E6E6E6; /* A lighter shade of silver for contrasts */
+  }
+  
+  body {
+    background-color: var(--tw-deep-blue);
+    color: var(--tw-silver);
+    font-family: 'Arial', sans-serif;
+  }
+  
+  /* Adding a subtle gradient background to match the logo */
+  body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    background: linear-gradient(135deg, var(--tw-deep-blue) 0%, var(--tw-dark-accent) 100%);
+  }
+
+  .sidebar {
+    background-color: #040e14;
+    color: #FFFFFF;
+  }
+  
+  /* UI Elements Styling */
+  button, input[type="submit"], input[type="button"] {
+    background-color: var(--tw-silver);
+    color: var(--tw-deep-blue);
+    border: none;
+    padding: 10px 20px;
+    text-transform: uppercase;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover, input[type="submit"]:hover, input[type="button"]:hover {
+    background-color: var(--tw-light-accent);
+    color: var(--tw-dark-accent);
+  }
+  
+  input[type="text"], textarea {
+    background-color: var(--tw-dark-accent);
+    color: var(--tw-silver);
+    border: 1px solid var(--tw-silver);
+    padding: 10px;
+  }
+  
+  /* Adding some magical sparkle effect to headers */
+  h1, h2, h3 {
+    color: var(--tw-magic-sparkle);
+    text-shadow: 0 0 8px var(--tw-magic-sparkle);
+  }
+  
+  /* Links styling */
+  a {
+    color: var(--tw-magic-sparkle);
+    text-decoration: none;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Additional classes for UI customization */
+  .bg-primary {
+    background-color: var(--tw-deep-blue);
+  }
+  
+  .text-primary {
+    color: var(--tw-deep-blue);
+  }
+  
+  .bg-secondary {
+    background-color: var(--tw-silver);
+  }
+  
+  .text-secondary {
+    color: var(--tw-silver);
+  }
+  

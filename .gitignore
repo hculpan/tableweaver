@@ -7,6 +7,14 @@
 *.dll
 *.so
 *.dylib
+.env
+tableweaver
+tableweaver.linux
+tw-cli
+tw-cli.linux
+.DS_Store
+db_data
+tmp
 
 # Test binary, built with `go test -c`
 *.test
