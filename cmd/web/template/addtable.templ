@@ -1,0 +1,79 @@
+package template
+
+import (
+"github.com/hculpan/tableweaver/cmd/web/template/component"
+"github.com/hculpan/tableweaver/pkg/model"
+)
+
+
+templ AddTablePage(te *model.TableEntry) {
+<!DOCTYPE html>
+<html lang="en">
+@component.Head()
+
+<body>
+	<div class="d-flex" style="min-height: 100vh;">
+		@component.Sidebar("Add Table")
+
+		<div class="flex-grow-1 p-3 container">
+			<div class="row color-main">
+				<div class="col-auto">
+					<h1>Add Table</h1>
+				</div>
+			</div>
+			<div class="row color-main">
+				<form action="/addtable" method="post">
+					<div>
+						<label class="form-label">Name</label>
+						if te != nil {
+						<input type="text" class="form-control" id="name" name="name" value={ te.Name } required />
+						} else {
+						<input type="text" class="form-control" id="name" name="name" required />
+						}
+					</div>
+
+					<div>
+						<label class="form-label">Description</label>
+						if te != nil {
+						<textarea class="form-control" id="description" name="description" rows="5" cols="80" value={
+							te.Description } />
+						} else {
+						<textarea class="form-control" id="description" name="description" rows="5" cols="80" />
+						}
+					</div>
+
+					<div>
+						<label class="form-label">URL</label>
+						if te != nil {
+						<input type="text" class="form-control" id="url" name="url" value={ te.Url } required />
+						} else {
+						<input type="text" class="form-control" id="url" name="url" required />
+						}
+					</div>
+
+					<div>
+						<label class="form-label">Source</label>
+						if te != nil {
+						<input type="text" class="form-control" id="source" name="source" value={ te.Source } />
+						} else {
+						<input type="text" class="form-control" id="source" name="source" />
+						}
+						<div class="form-text">
+							Enter a note about where the table came from.
+						</div>
+					</div>
+
+					<button class="btn btn-primary" type="submit">Save</button>
+				</form>
+			</div>
+			<div class="row color-main">
+			</div>
+
+		</div>
+	</div>
+
+	@component.Footer()
+</body>
+
+</html>
+}

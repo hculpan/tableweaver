@@ -26,7 +26,7 @@ func addUserRun(cmd *cobra.Command, args []string) error {
 	}
 	defer closeDb()
 
-	user, err := model.New(args[0], args[1], args[2], true, true)
+	user, err := model.NewUser(args[0], args[1], args[2], true, true)
 	if err != nil {
 		return err
 	}

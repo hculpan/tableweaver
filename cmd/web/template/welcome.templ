@@ -1,20 +1,44 @@
 package template
 
-import "github.com/hculpan/tableweaver/cmd/web/template/component"
+import (
+"github.com/hculpan/tableweaver/cmd/web/template/component"
+"github.com/hculpan/tableweaver/pkg/model"
+)
 
-templ WelcomePage(username string) {
+templ WelcomePage(tableEntires []*model.TableEntry) {
 <!DOCTYPE html>
 <html lang="en">
 @component.Head()
 
 <body>
 	<div class="d-flex" style="min-height: 100vh;">
-		@component.Sidebar("My Collection")
+		@component.Sidebar("My Tables")
 
-		<div class="flex-grow-1 p-3">
-			<div class="color-main"> <!-- </div>hx-get="/album-list" hx-trigger="load" hx-swap="innerHTML"> -->
-				<p>Welcome, { username }!</p>
-				<!-- More content -->
+		<div class="container color-main mt-4">
+			<div class="row">
+				<div class="col-auto">
+					<h1>My Tables</h1>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-6">
+					<table class="table bg-transparent text-light">
+						for _, t := range tableEntires {
+						<tbody>
+							<tr>
+								<td><a href={ templ.SafeURL(t.Url) } target="_blank">{ t.Name }</a></td>
+								<td> { t.Description }</td>
+							</tr>
+						</tbody>
+						}
+					</table>
+
+				</div>
+				<div class="col-6">
+					<!--					<iframe name="myIframe" id="myIframe">
+						Your browser does not support iframes.
+					</iframe> -->
+				</div>
 			</div>
 		</div>
 	</div>

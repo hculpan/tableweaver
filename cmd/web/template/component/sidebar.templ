@@ -8,13 +8,25 @@ templ Sidebar(active string) {
     </div>
     <ul class="nav nav-pills flex-column">
         <li class="nav-item">
+            if active == "My Tables" {
             <a class="nav-link active" href="/mytables">My Tables</a>
+            } else {
+            <a class="nav-link" href="/mytables">My Tables</a>
+            }
         </li>
         <li class="nav-item">
+            if active == "Add Table" {
+            <a class="nav-link active" href="/addtable">Add Table</a>
+            } else {
             <a class="nav-link" href="/addtable">Add Table</a>
+            }
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">Community</a>
+            if active == "Logout" {
+            <a class="nav-link active" href="/logout">Logout</a>
+            } else {
+            <a class="nav-link" href="/logout">Logout</a>
+            }
         </li>
     </ul>
 </nav>

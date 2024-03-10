@@ -89,3 +89,10 @@
     color: var(--tw-silver);
   }
   
+  .bg-darkaccemt {
+    background-color: var(--tw-dark-accent);
+  }
+
+  .bg-transparent {
+    background-color: transparent;
+  }

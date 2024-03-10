@@ -29,7 +29,7 @@ func deleteUser(cmd *cobra.Command, args []string) error {
 	defer closeDb()
 
 	username := strings.ToLower(args[0])
-	user, err := db.GetValue(model.GetDbKey(username))
+	user, err := db.GetValue(model.GetUserDbKey(username))
 	if err != nil && !strings.Contains(err.Error(), "Key not found") {
 		return err
 	}

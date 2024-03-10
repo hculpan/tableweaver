@@ -18,7 +18,7 @@ type User struct {
 	Validated    time.Time `json:"validated"`
 }
 
-func New(username, realname, password string, isRegistered, isValidated bool) (*User, error) {
+func NewUser(username, realname, password string, isRegistered, isValidated bool) (*User, error) {
 	result := User{
 		Username: strings.ToLower(username),
 		RealName: realname,
@@ -41,6 +41,21 @@ func New(username, realname, password string, isRegistered, isValidated bool) (*
 	return &result, nil
 }
 
+func userFromDbValue(value string) (*User, error) {
+	user := User{}
+	err := json.Unmarshal([]byte(value), &user)
+	return &user, err
+}
+
+func UserFromDb(username string) (*User, error) {
+	userValue, err := db.GetValue(GetUserDbKey(username))
+	if err != nil {
+		return nil, err
+	}
+
+	return userFromDbValue(string(userValue))
+}
+
 func (u *User) String() string {
 	result := fmt.Sprintf("%s, %q, %s", u.Username, u.RealName, u.PasswordHash)
 	if !u.Registered.IsZero() {
@@ -61,10 +76,10 @@ func (u *User) DbValue() (string, error) {
 }
 
 func (u *User) DbKey() string {
-	return GetDbKey(u.Username)
+	return GetUserDbKey(u.Username)
 }
 
-func GetDbKey(username string) string {
+func GetUserDbKey(username string) string {
 	return username + "-userrecord"
 }
 
@@ -89,12 +104,11 @@ func GetAllUsers() ([]*User, error) {
 
 	result := []*User{}
 	for _, v := range userValues {
-		user := User{}
-		err := json.Unmarshal([]byte(v), &user)
+		user, err := userFromDbValue(string(v))
 		if err != nil {
 			return result, err
 		}
-		result = append(result, &user)
+		result = append(result, user)
 	}
 
 	return result, nil
