@@ -44,7 +44,7 @@ func WelcomePage(tableEntires []*model.TableEntry) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"container color-main mt-4\"><div class=\"row\"><div class=\"col-auto\"><h1>My Tables</h1></div></div><div class=\"row\"><div class=\"col-6\"><table class=\"table bg-transparent text-light\">")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"container color-main mt-4\"><div class=\"row\"><div class=\"col-auto\"><h1>My Tables</h1></div></div><div class=\"row\"><div class=\"col-auto\"><table class=\"table bg-transparent text-light\"><thead><tr><th scope=\"col\">Name</th><th scope=\"col\">Description</th><th scope=\"col\">Source</th></tr></thead> ")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -65,7 +65,7 @@ func WelcomePage(tableEntires []*model.TableEntry) templ.Component {
 			var templ_7745c5c3_Var3 string
 			templ_7745c5c3_Var3, templ_7745c5c3_Err = templ.JoinStringErrs(t.Name)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `cmd/web/template/welcome.templ`, Line: 28, Col: 69}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `cmd/web/template/welcome.templ`, Line: 35, Col: 69}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var3))
 			if templ_7745c5c3_Err != nil {
@@ -78,9 +78,22 @@ func WelcomePage(tableEntires []*model.TableEntry) templ.Component {
 			var templ_7745c5c3_Var4 string
 			templ_7745c5c3_Var4, templ_7745c5c3_Err = templ.JoinStringErrs(t.Description)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `cmd/web/template/welcome.templ`, Line: 29, Col: 28}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `cmd/web/template/welcome.templ`, Line: 36, Col: 28}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var4))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</td><td>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var5 string
+			templ_7745c5c3_Var5, templ_7745c5c3_Err = templ.JoinStringErrs(t.Source)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `cmd/web/template/welcome.templ`, Line: 37, Col: 23}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var5))
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -89,7 +102,7 @@ func WelcomePage(tableEntires []*model.TableEntry) templ.Component {
 				return templ_7745c5c3_Err
 			}
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</table></div><div class=\"col-6\"><!--\t\t\t\t\t<iframe name=\"myIframe\" id=\"myIframe\">\n\t\t\t\t\t\tYour browser does not support iframes.\n\t\t\t\t\t</iframe> --></div></div></div></div>")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</table></div></div></div></div>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

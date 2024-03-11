@@ -37,6 +37,8 @@ func AddTableHandler(w http.ResponseWriter, r *http.Request) {
 				component.Render(context.Background(), w)
 				return
 			}
+
+			http.Redirect(w, r, "/welcome", http.StatusSeeOther)
 		} else {
 			component := template.MessagePage("required fields are blank", true)
 			component.Render(context.Background(), w)

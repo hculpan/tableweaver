@@ -21,23 +21,25 @@ templ WelcomePage(tableEntires []*model.TableEntry) {
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-6">
+				<div class="col-auto">
 					<table class="table bg-transparent text-light">
+						<thead>
+							<tr>
+								<th scope="col">Name</th>
+								<th scope="col">Description</th>
+								<th scope="col">Source</th>
+							</tr>
+						</thead>
 						for _, t := range tableEntires {
 						<tbody>
 							<tr>
 								<td><a href={ templ.SafeURL(t.Url) } target="_blank">{ t.Name }</a></td>
 								<td> { t.Description }</td>
+								<td> { t.Source }</td>
 							</tr>
 						</tbody>
 						}
 					</table>
-
-				</div>
-				<div class="col-6">
-					<!--					<iframe name="myIframe" id="myIframe">
-						Your browser does not support iframes.
-					</iframe> -->
 				</div>
 			</div>
 		</div>
