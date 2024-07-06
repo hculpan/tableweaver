@@ -16,6 +16,7 @@ func Routes(mux *http.ServeMux) {
 	mux.HandleFunc("/welcome", log(authorized(WelcomeHandler)))
 	mux.HandleFunc("/logout", log(authorized(LogoutHandler)))
 	mux.HandleFunc("/addtable", log(authorized(AddTableHandler)))
+	mux.HandleFunc("/deletetable", log(authorized(DeleteTableHandler)))
 }
 
 func authorized(next http.HandlerFunc) http.HandlerFunc {

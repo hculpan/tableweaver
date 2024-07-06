@@ -48,7 +48,6 @@ func AddTableHandler(w http.ResponseWriter, r *http.Request) {
 		component := template.AddTablePage(tableEntry)
 		component.Render(context.Background(), w)
 	} else {
-		// Render login page
 		component := template.AddTablePage(nil)
 		component.Render(context.Background(), w)
 	}

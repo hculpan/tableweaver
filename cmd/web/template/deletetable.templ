@@ -1,0 +1,49 @@
+package template
+
+import (
+"github.com/hculpan/tableweaver/cmd/web/template/component"
+"github.com/hculpan/tableweaver/pkg/model"
+)
+
+
+templ DeleteTablePage(tableEntries []*model.TableEntry) {
+<!DOCTYPE html>
+<html lang="en">
+@component.Head()
+
+<body>
+    <div class="d-flex" style="min-height: 100vh;">
+        @component.Sidebar("Delete Table")
+
+        <div class="flex-grow-1 p-3 container">
+            <div class="row color-main">
+                <div class="col-auto">
+                    <h1>Delete Table</h1>
+                </div>
+            </div>
+            <div class="row color-main">
+                <form action="/deletetable" method="post">
+                    <div class="mb-4">
+                        <label class="form-label">Name</label>
+                        <select class="form-select" id="name" name="name" aria-label="Default select example">
+                            <option selected>Select Table</option>
+                            for _, t := range tableEntries {
+                            <option value={t.Name}>{t.Name}</option>
+                            }
+                        </select>
+                    </div>
+
+                    <button class="btn btn-primary no-uppercase" type="submit">Delete</button>
+                </form>
+            </div>
+            <div class="row color-main">
+            </div>
+
+        </div>
+    </div>
+
+    @component.Footer()
+</body>
+
+</html>
+}

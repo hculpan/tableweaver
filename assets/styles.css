@@ -38,7 +38,6 @@
     color: var(--tw-deep-blue);
     border: none;
     padding: 10px 20px;
-    text-transform: uppercase;
     font-weight: bold;
     cursor: pointer;
     transition: background-color 0.3s ease;
@@ -95,4 +94,13 @@
 
   .bg-transparent {
     background-color: transparent;
+  }
+
+  .no-uppercase {
+    text-transform: none !important;
+  }
+
+  button.btn.btn-secondary.dropdown-toggle.no-uppercase,
+  button.btn.btn-primary.no-uppercase {
+    text-transform: none !important;
   }

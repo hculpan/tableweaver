@@ -39,6 +39,16 @@ func (t *TableEntry) DbValue() (string, error) {
 	return string(jsonData), nil
 }
 
+func GetTable(username, tableName string) (*TableEntry, error) {
+	key := GetTableEntryDbKey(username, tableName)
+	raw, err := db.GetValue(key)
+	if err != nil {
+		return nil, err
+	}
+
+	return tableEntryFromDbValue(string(raw))
+}
+
 func GetAllTables(username string) ([]*TableEntry, error) {
 	keys, err := db.SearchKeysWithSubstring(username + "-table-")
 	if err != nil {
